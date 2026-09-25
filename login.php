@@ -86,14 +86,19 @@ $pageTitle = 'Sign In';
 
             <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    name="password"
-                    autocomplete="current-password"
-                    required
-                >
+                <div class="password-field">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <button type="button" class="password-toggle" data-password-toggle="password" aria-label="Show password" aria-pressed="false">
+                        <i class="ti ti-eye"></i>
+                    </button>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-agri w-100">Sign in</button>
@@ -136,6 +141,17 @@ function fillDemo(email, password) {
     document.getElementById('email').value = email;
     document.getElementById('password').value = password;
 }
+
+document.querySelectorAll('[data-password-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        var input = document.getElementById(btn.dataset.passwordToggle);
+        var show  = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+        btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        btn.querySelector('i').className = show ? 'ti ti-eye-off' : 'ti ti-eye';
+    });
+});
 </script>
 </body>
 </html>

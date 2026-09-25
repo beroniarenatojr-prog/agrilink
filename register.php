@@ -161,9 +161,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Password -->
                 <div class="col-12 col-md-6">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control <?= !empty($errors['password']) ? 'is-invalid' : '' ?>" id="password" name="password" autocomplete="new-password" required>
+                    <div class="password-field">
+                        <input type="password" class="form-control <?= !empty($errors['password']) ? 'is-invalid' : '' ?>" id="password" name="password" autocomplete="new-password" required>
+                        <button type="button" class="password-toggle" data-password-toggle="password" aria-label="Show password" aria-pressed="false">
+                            <i class="ti ti-eye"></i>
+                        </button>
+                    </div>
                     <?php if (!empty($errors['password'])): ?>
-                        <div class="invalid-feedback"><?= htmlspecialchars($errors['password']) ?></div>
+                        <div class="invalid-feedback d-block"><?= htmlspecialchars($errors['password']) ?></div>
                     <?php endif; ?>
                     <div class="form-text">Minimum 8 characters.</div>
                 </div>
@@ -171,9 +176,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Confirm password -->
                 <div class="col-12 col-md-6">
                     <label for="password_confirm" class="form-label">Confirm password</label>
-                    <input type="password" class="form-control <?= !empty($errors['password_confirm']) ? 'is-invalid' : '' ?>" id="password_confirm" name="password_confirm" autocomplete="new-password" required>
+                    <div class="password-field">
+                        <input type="password" class="form-control <?= !empty($errors['password_confirm']) ? 'is-invalid' : '' ?>" id="password_confirm" name="password_confirm" autocomplete="new-password" required>
+                        <button type="button" class="password-toggle" data-password-toggle="password_confirm" aria-label="Show password" aria-pressed="false">
+                            <i class="ti ti-eye"></i>
+                        </button>
+                    </div>
                     <?php if (!empty($errors['password_confirm'])): ?>
-                        <div class="invalid-feedback"><?= htmlspecialchars($errors['password_confirm']) ?></div>
+                        <div class="invalid-feedback d-block"><?= htmlspecialchars($errors['password_confirm']) ?></div>
                     <?php endif; ?>
                 </div>
 
@@ -190,5 +200,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('[data-password-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        var input = document.getElementById(btn.dataset.passwordToggle);
+        var show  = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+        btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        btn.querySelector('i').className = show ? 'ti ti-eye-off' : 'ti ti-eye';
+    });
+});
+</script>
 </body>
 </html>

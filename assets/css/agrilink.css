@@ -1032,6 +1032,49 @@ a:focus {
     outline: none;
 }
 
+/* Password field with show/hide toggle */
+.password-field {
+    position: relative;
+}
+
+.password-field .form-control {
+    padding-right: 3rem;
+}
+
+.password-field .form-control.is-invalid {
+    padding-right: 5rem;
+    background-position: right 3rem center;
+}
+
+.password-field .form-control::-ms-reveal {
+    display: none;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%; right: 0.5rem;
+    transform: translateY(-50%);
+    width: 2.25rem; height: 2.25rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 0; border-radius: var(--agri-radius-sm);
+    background: transparent;
+    color: var(--agri-text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.password-toggle:hover {
+    color: var(--agri-green-dark);
+    background: var(--agri-green-muted);
+}
+
+.password-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--agri-green-muted);
+    color: var(--agri-green-dark);
+}
+
 /* ---------------------------------------------------------
    Misc & Details
    --------------------------------------------------------- */
