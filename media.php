@@ -32,14 +32,22 @@ if ($realBase === false) {
 
 $realFile = realpath($fullPath);
 
-if ($realFile === false || !str_starts_with($realFile, $realBase . DIRECTORY_SEPARATOR)) {
-    http_response_code(403);
-    exit('Access denied.');
+// Missing file (e.g. lost upload): serve a neutral placeholder instead of a broken image icon.
+if ($realFile === false || !is_file($realFile)) {
+    header('Content-Type: image/svg+xml');
+    header('Cache-Control: no-store');
+    exit('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">'
+        . '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient></defs>'
+        . '<rect width="400" height="300" fill="url(#g)"/>'
+        . '<g fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="translate(170 104)">'
+        . '<rect x="0" y="0" width="60" height="48" rx="8"/><circle cx="18" cy="16" r="5"/><path d="M0 40l18-16 14 12 10-8 18 14"/></g>'
+        . '<text x="200" y="192" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="18" font-weight="600" fill="#94a3b8">No photo</text>'
+        . '</svg>');
 }
 
-if (!is_file($realFile)) {
-    http_response_code(404);
-    exit('File not found.');
+if (!str_starts_with($realFile, $realBase . DIRECTORY_SEPARATOR)) {
+    http_response_code(403);
+    exit('Access denied.');
 }
 
 $ext = strtolower(pathinfo($realFile, PATHINFO_EXTENSION));
