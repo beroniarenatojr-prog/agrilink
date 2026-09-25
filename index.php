@@ -44,7 +44,7 @@ http_response_code(404);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page Not Found — <?= htmlspecialchars(APP_NAME, ENT_QUOTES, 'UTF-8') ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= url('/assets/css/agrilink.css') ?>" rel="stylesheet">
+    <link href="<?= asset('/assets/css/agrilink.css') ?>" rel="stylesheet">
 </head>
 
 <body class="d-flex align-items-center justify-content-center min-vh-100" style="background:var(--agri-bg)">

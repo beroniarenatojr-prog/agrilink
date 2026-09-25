@@ -20,6 +20,17 @@ function url(string $path = ''): string
 }
 
 /**
+ * Build a static asset URL with a version stamp so browsers/CDN refetch it after it changes.
+ */
+function asset(string $path): string
+{
+    $file = dirname(__DIR__) . '/' . ltrim($path, '/');
+    $ver  = is_file($file) ? filemtime($file) : null;
+
+    return url($path) . ($ver ? '?v=' . $ver : '');
+}
+
+/**
  * Redirect and exit.
  */
 function redirect(string $path): never
