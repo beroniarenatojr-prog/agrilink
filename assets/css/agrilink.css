@@ -1,0 +1,2312 @@
+/* =========================================================
+   AgriLink Design System (Enhanced & Modernized)
+   Single source of truth for all custom styles.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* ---------------------------------------------------------
+   CSS Custom Properties (Variables)
+   --------------------------------------------------------- */
+:root {
+    /* Color Palette - Vibrant Nature */
+    --agri-green:        #10b981; /* Emerald 500 */
+    --agri-green-dark:   #059669; /* Emerald 600 */
+    --agri-green-light:  #34d399; /* Emerald 400 */
+    --agri-green-muted:  rgba(16, 185, 129, 0.1);
+    --agri-yellow:       #f59e0b; /* Amber 500 */
+    
+    /* Layout & Surface */
+    --agri-bg:           #f8fafc; /* Slate 50 */
+    --agri-surface:      #ffffff;
+    --agri-surface-glass: rgba(255, 255, 255, 0.85);
+    
+    /* Text */
+    --agri-text:         #0f172a; /* Slate 900 */
+    --agri-text-muted:   #64748b; /* Slate 500 */
+    
+    /* Borders & Shadows */
+    --agri-border:       #e2e8f0; /* Slate 200 */
+    --agri-shadow-sm:    0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+    --agri-shadow-md:    0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    --agri-shadow-lg:    0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+    --agri-shadow-glow:  0 0 15px rgba(16, 185, 129, 0.3);
+    
+    /* Sizing */
+    --agri-sidebar-width: 280px;
+    --agri-radius-sm:    8px;
+    --agri-radius:       16px;
+    --agri-radius-lg:    24px;
+    
+    /* Transitions */
+    --transition-fast:   0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base:   0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------------------------------------------------------
+   Base & Reset
+   --------------------------------------------------------- */
+body {
+    background-color: var(--agri-bg);
+    color: var(--agri-text);
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.agri-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.agri-layout > .agri-main-content {
+    flex: 1;
+}
+
+a {
+    color: var(--agri-green);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+    color: var(--agri-green-dark);
+    text-decoration: none;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ---------------------------------------------------------
+   Page Headers
+   --------------------------------------------------------- */
+.page-header {
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.5s ease-out;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--agri-text);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 0.95rem;
+    color: var(--agri-text-muted);
+    font-weight: 400;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
+.btn-agri {
+    background: linear-gradient(135deg, var(--agri-green), var(--agri-green-dark));
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--agri-radius-sm);
+    padding: 0.6rem 1.25rem;
+    transition: all var(--transition-bounce);
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.btn-agri:hover,
+.btn-agri:focus {
+    transform: translateY(-2px);
+    box-shadow: var(--agri-shadow-glow);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-agri:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn-agri-outline {
+    background: transparent;
+    border: 2px solid var(--agri-green);
+    color: var(--agri-green);
+    font-weight: 600;
+    border-radius: var(--agri-radius-sm);
+    padding: 0.5rem 1.15rem;
+    transition: all var(--transition-bounce);
+}
+
+.btn-agri-outline:hover,
+.btn-agri-outline:focus {
+    background: var(--agri-green-muted);
+    color: var(--agri-green-dark);
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   Cards & Stats
+   --------------------------------------------------------- */
+.card {
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    box-shadow: var(--agri-shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--agri-shadow-md);
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--agri-border);
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.stat-card {
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    padding: 1.5rem;
+    box-shadow: var(--agri-shadow-sm);
+    transition: transform var(--transition-bounce), box-shadow var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle at top right, var(--agri-green-muted), transparent 70%);
+    opacity: 0.5;
+    transition: opacity var(--transition-base);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--agri-shadow-md);
+}
+.stat-card:hover::after {
+    opacity: 1;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--agri-text);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--agri-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+}
+
+/* ---------------------------------------------------------
+   Tables
+   --------------------------------------------------------- */
+.table-agri {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-agri thead th {
+    background-color: var(--agri-bg);
+    color: var(--agri-text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid var(--agri-border);
+    white-space: nowrap;
+}
+
+.table-agri tbody td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--agri-border);
+    vertical-align: middle;
+    transition: background-color var(--transition-fast);
+}
+
+.table-agri tbody tr:hover td {
+    background-color: var(--agri-green-muted);
+}
+
+.table-agri tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-card-footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--agri-border);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--agri-text-muted);
+    background: var(--agri-bg);
+    border-radius: 0 0 var(--agri-radius) var(--agri-radius);
+}
+
+.table-card-footer--split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.table-card-footer__summary {
+    font-weight: 600;
+}
+
+.agri-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.agri-pagination__btn,
+.agri-pagination__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border-radius: var(--agri-radius-sm);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--agri-text-muted);
+    border: 1px solid var(--agri-border);
+    background: var(--agri-surface);
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.agri-pagination__btn:hover,
+.agri-pagination__page:hover {
+    background: var(--agri-green-muted);
+    border-color: rgba(16, 185, 129, 0.25);
+    color: var(--agri-green-dark);
+}
+
+.agri-pagination__page.is-active {
+    background: var(--agri-green);
+    border-color: var(--agri-green);
+    color: #fff;
+}
+
+.agri-pagination__btn.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.agri-pagination__ellipsis {
+    padding: 0 0.15rem;
+    color: var(--agri-text-muted);
+    font-weight: 700;
+}
+
+.agri-list-pagination {
+    margin-top: 1.5rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    background: var(--agri-surface);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--agri-text-muted);
+}
+
+.agri-list-pagination--split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.agri-list-pagination__summary {
+    font-weight: 600;
+}
+
+.card > .table-responsive {
+    border-radius: var(--agri-radius) var(--agri-radius) 0 0;
+}
+
+.card:has(.table-card-footer) {
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   Badges
+   --------------------------------------------------------- */
+.badge-status, .price-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.4em 0.8em;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.badge-status-pending, .badge-payment-pending {
+    background-color: #fef3c7; color: #b45309; border: 1px solid #fde68a;
+}
+.badge-status-processing {
+    background-color: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd;
+}
+.badge-status-in_transit {
+    background-color: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff;
+}
+.badge-status-delivered, .badge-payment-paid, .price-badge-within {
+    background-color: #d1fae5; color: #047857; border: 1px solid #a7f3d0;
+}
+.badge-status-cancelled, .price-badge-above {
+    background-color: #fee2e2; color: #b91c1c; border: 1px solid #fecaca;
+}
+.price-badge-below {
+    background-color: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd;
+}
+
+/* ---------------------------------------------------------
+   Top Navbar (Glassmorphism)
+   --------------------------------------------------------- */
+.agri-navbar {
+    background: var(--agri-surface-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    padding: 0.75rem 0;
+    transition: all var(--transition-base);
+}
+
+.agri-navbar .navbar-brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--agri-text);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.agri-navbar .brand-icon {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, var(--agri-green-light), var(--agri-green));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.agri-navbar .nav-link {
+    color: var(--agri-text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--agri-radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.agri-navbar .nav-link:hover,
+.agri-navbar .nav-link:focus,
+.agri-navbar .nav-link.active {
+    color: var(--agri-green-dark);
+    background: var(--agri-green-muted);
+    text-decoration: none;
+}
+
+.agri-navbar a.btn:hover,
+.agri-navbar a.btn:focus {
+    text-decoration: none;
+}
+
+.cart-badge-link {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -2px; right: 0px;
+    background: #ef4444; /* Red 500 for attention */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+    border: 2px solid white;
+}
+
+/* ---------------------------------------------------------
+   Sidebar (Farmer/Admin)
+   --------------------------------------------------------- */
+.agri-sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--agri-sidebar-width);
+    height: 100vh;
+    background: var(--agri-surface);
+    border-right: 1px solid var(--agri-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1040;
+    transition: transform var(--transition-base);
+}
+
+.agri-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--agri-text);
+}
+
+.agri-sidebar-brand .brand-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--agri-green-light), var(--agri-green));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    box-shadow: var(--agri-shadow-glow);
+}
+
+.agri-nav {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.agri-nav-section {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--agri-text-muted);
+    padding: 1rem 0.75rem 0.5rem;
+}
+
+.agri-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    color: var(--agri-text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.agri-nav li a:hover {
+    background: var(--agri-bg);
+    color: var(--agri-text);
+    transform: translateX(4px);
+}
+
+.agri-nav li a.active {
+    background: var(--agri-green-muted);
+    color: var(--agri-green-dark);
+}
+
+.agri-sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--agri-border);
+}
+
+.agri-main {
+    margin-left: var(--agri-sidebar-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.agri-topbar {
+    background: var(--agri-surface-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--agri-border);
+    padding: 0.875rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.agri-topbar-start {
+    min-width: 0;
+}
+
+.agri-topbar-greeting {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--agri-text);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.agri-topbar-greeting-name {
+    color: var(--agri-green-dark);
+}
+
+.agri-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-left: auto;
+}
+
+.agri-topbar-user {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+    border: 1px solid var(--agri-border);
+    border-radius: 999px;
+    background: var(--agri-surface);
+    text-decoration: none;
+    transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.agri-topbar-user:hover {
+    background: var(--agri-bg);
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: var(--agri-shadow-sm);
+}
+
+.agri-topbar-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--agri-green-light), var(--agri-green));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.agri-topbar-user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+    min-width: 0;
+}
+
+.agri-topbar-user-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--agri-text);
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.agri-topbar-user-role {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--agri-green-dark);
+}
+
+.agri-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+.agri-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--agri-text);
+    padding: 0.25rem;
+    cursor: pointer;
+    line-height: 1;
+    align-items: center;
+}
+
+@media (max-width: 991.98px) {
+    .agri-sidebar { transform: translateX(-100%); }
+    .agri-sidebar.show { transform: translateX(0); }
+    .agri-main { margin-left: 0; }
+    .agri-menu-toggle { display: flex; }
+    .agri-topbar { padding: 0.75rem 1rem; }
+    .agri-topbar-greeting { font-size: 0.875rem; }
+    .agri-sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); z-index: 1039; }
+    .agri-sidebar-backdrop.show { display: block; }
+}
+
+/* ---------------------------------------------------------
+   Auth Pages (Login / Register)
+   --------------------------------------------------------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--agri-bg) 0%, #e2e8f0 100%);
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decoration for auth */
+.auth-wrapper::before, .auth-wrapper::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+.auth-wrapper::before {
+    width: 400px; height: 400px;
+    background: rgba(52, 211, 153, 0.3);
+    top: -100px; left: -100px;
+}
+.auth-wrapper::after {
+    width: 300px; height: 300px;
+    background: rgba(245, 158, 11, 0.2);
+    bottom: -50px; right: -50px;
+}
+
+.auth-card {
+    background: var(--agri-surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--agri-radius-lg);
+    padding: 3rem;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: var(--agri-shadow-lg);
+    z-index: 1;
+    animation: zoomIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.auth-brand {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-brand .brand-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--agri-green-light), var(--agri-green));
+    border-radius: 16px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: white; font-size: 2rem;
+    box-shadow: var(--agri-shadow-glow);
+    margin-bottom: 1rem;
+}
+
+.auth-title {
+    font-size: 1.75rem; font-weight: 800; color: var(--agri-text); margin-bottom: 0.5rem; letter-spacing: -0.03em;
+}
+
+.auth-subtitle {
+    font-size: 1rem; color: var(--agri-text-muted);
+}
+
+.auth-footer-link {
+    font-size: 0.875rem;
+    color: var(--agri-text-muted);
+}
+
+.auth-footer-link a {
+    color: var(--agri-green-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer-link a:hover {
+    color: var(--agri-green);
+    text-decoration: underline;
+}
+
+.auth-demo {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--agri-border);
+}
+
+.auth-demo__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--agri-text-muted);
+    text-align: center;
+    margin-bottom: 0.875rem;
+}
+
+.auth-demo__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+}
+
+@media (min-width: 480px) {
+    .auth-demo__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.auth-demo__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    background: var(--agri-bg);
+    color: var(--agri-text);
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast),
+                transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-demo__btn .ti {
+    font-size: 1.25rem;
+}
+
+.auth-demo__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--agri-shadow-sm);
+}
+
+.auth-demo__btn:active {
+    transform: translateY(0);
+}
+
+.auth-demo__btn--admin {
+    color: #7c3aed;
+    background: rgba(124, 58, 237, 0.06);
+    border-color: rgba(124, 58, 237, 0.18);
+}
+
+.auth-demo__btn--admin:hover {
+    background: rgba(124, 58, 237, 0.12);
+    border-color: rgba(124, 58, 237, 0.35);
+}
+
+.auth-demo__btn--farmer {
+    color: var(--agri-green-dark);
+    background: var(--agri-green-muted);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+.auth-demo__btn--farmer:hover {
+    background: rgba(16, 185, 129, 0.16);
+    border-color: var(--agri-green-light);
+}
+
+.auth-demo__btn--buyer {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.18);
+}
+
+.auth-demo__btn--buyer:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+.auth-demo__btn--logistics {
+    color: #7e22ce;
+    background: rgba(126, 34, 206, 0.06);
+    border-color: rgba(126, 34, 206, 0.18);
+}
+
+.auth-demo__btn--logistics:hover {
+    background: rgba(126, 34, 206, 0.12);
+    border-color: rgba(126, 34, 206, 0.35);
+}
+
+@media (max-width: 380px) {
+    .auth-demo__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-demo__btn {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+    }
+}
+
+/* ---------------------------------------------------------
+   Marketplace Product Cards
+   --------------------------------------------------------- */
+.product-card {
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    height: 100%;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), 0 0 0 2px var(--agri-green);
+    border-color: transparent;
+}
+
+.product-card-img-wrap {
+    aspect-ratio: 1 / 1;
+    background: var(--agri-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.product-card-img-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.product-card-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover .product-card-img-wrap img {
+    transform: scale(1.15) rotate(2deg);
+}
+
+
+.product-card-body {
+    padding: 1.25rem;
+    display: flex; flex-direction: column; flex: 1;
+    color: inherit !important;
+}
+
+.product-card-body:hover,
+.product-card-body:focus {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.product-card-name {
+    font-weight: 700; font-size: 1.05rem; color: var(--agri-text);
+    margin-bottom: 0.5rem; line-height: 1.3;
+}
+
+.product-card-price {
+    font-weight: 800; font-size: 1.25rem; color: var(--agri-green);
+    margin-top: auto;
+}
+
+.product-card-meta {
+    font-size: 0.85rem; color: var(--agri-text-muted); font-weight: 500;
+}
+
+/* Category filter chips */
+.category-chips {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+
+.chip {
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    border: 1px solid var(--agri-border);
+    background: var(--agri-surface);
+    color: var(--agri-text-muted);
+    font-size: 0.9rem; font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.chip:hover, .chip.active {
+    background: var(--agri-text);
+    color: white; border-color: var(--agri-text);
+}
+.chip.active {
+    background: var(--agri-green);
+    border-color: var(--agri-green);
+}
+
+/* ---------------------------------------------------------
+   Forms & Inputs
+   --------------------------------------------------------- */
+.form-label {
+    font-weight: 600; font-size: 0.9rem; color: var(--agri-text); margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+}
+
+.form-control {
+    padding: 0.6rem 1rem;
+}
+
+.form-select {
+    padding: 0.6rem 2.25rem 0.6rem 1rem;
+    background-position: right 0.75rem center;
+    background-size: 14px 10px;
+}
+
+.form-select.form-select-sm {
+    padding: 0.35rem 2rem 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    background-position: right 0.6rem center;
+    background-size: 12px 9px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--agri-green);
+    box-shadow: 0 0 0 4px var(--agri-green-muted);
+    outline: none;
+}
+
+/* ---------------------------------------------------------
+   Misc & Details
+   --------------------------------------------------------- */
+.img-placeholder {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; font-weight: 600; font-size: 0.9rem;
+}
+
+.text-agri { color: var(--agri-green) !important; }
+.bg-agri-muted { background: var(--agri-green-muted) !important; }
+
+/* ---------------------------------------------------------
+   Product Detail
+   --------------------------------------------------------- */
+.product-gallery-main {
+    border-radius: var(--agri-radius); overflow: hidden; border: 1px solid var(--agri-border);
+}
+.product-price-large {
+    font-size: 2.2rem; font-weight: 800; color: var(--agri-green); letter-spacing: -0.03em;
+}
+.qty-stepper {
+    display: inline-flex; border: 2px solid var(--agri-border); border-radius: var(--agri-radius-sm);
+}
+.qty-stepper button {
+    background: none; border: none; padding: 0.5rem 1rem; font-weight: 700; cursor: pointer;
+}
+.qty-stepper button:hover { background: var(--agri-green-muted); color: var(--agri-green-dark); }
+.qty-stepper input {
+    border: none; border-left: 2px solid var(--agri-border); border-right: 2px solid var(--agri-border);
+    width: 60px; text-align: center; font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.agri-footer {
+    background: var(--agri-surface);
+    border-top: 1px solid var(--agri-border);
+    padding: 1.5rem 0;
+    text-align: center;
+    color: var(--agri-text-muted);
+    font-size: 0.875rem;
+    margin-top: auto;
+}
+
+/* ---------------------------------------------------------
+   Cart Page
+   --------------------------------------------------------- */
+.cart-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cart-page-header__intro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-page-header__icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--agri-radius-sm);
+    background: var(--agri-green-muted);
+    color: var(--agri-green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.cart-items-card {
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    background: var(--agri-surface);
+    box-shadow: var(--agri-shadow-sm);
+    overflow: hidden;
+}
+
+.cart-items-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.35rem;
+    border-bottom: 1px solid var(--agri-border);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cart-items-card__count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--agri-green-dark);
+    background: var(--agri-green-muted);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.35rem;
+    border-bottom: 1px solid var(--agri-border);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-img {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: var(--agri-radius-sm);
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--agri-border);
+    background: var(--agri-bg);
+}
+
+.cart-item-img--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 1.5rem;
+}
+
+.cart-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--agri-text);
+    margin-bottom: 0.2rem;
+}
+
+.cart-item-meta {
+    font-size: 0.875rem;
+    color: var(--agri-text-muted);
+}
+
+.cart-item-actions {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.cart-item-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--agri-text);
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-remove {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--agri-radius-sm);
+}
+
+.cart-items-card__footer {
+    padding: 0.875rem 1.35rem;
+    border-top: 1px solid var(--agri-border);
+    background: #fafbfc;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-summary {
+    position: sticky;
+    top: 5.5rem;
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    background: var(--agri-surface);
+    box-shadow: var(--agri-shadow-md);
+    padding: 1.35rem;
+}
+
+.cart-summary__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--agri-text);
+    margin-bottom: 1rem;
+}
+
+.order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--agri-text-muted);
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--agri-border);
+}
+
+.order-summary-row span:first-child {
+    min-width: 0;
+}
+
+.order-summary-total {
+    border-bottom: none;
+    margin-top: 0.5rem;
+    padding-top: 0.85rem;
+    border-top: 2px solid var(--agri-border);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--agri-text);
+}
+
+.order-summary-total span:last-child {
+    color: var(--agri-green-dark);
+    font-size: 1.15rem;
+}
+
+.cart-summary__note {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.875rem;
+    font-size: 0.75rem;
+    color: var(--agri-text-muted);
+}
+
+.cart-summary__note .ti {
+    color: var(--agri-green);
+    font-size: 0.9rem;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 3.5rem 2rem;
+    border: 1px dashed var(--agri-border);
+    border-radius: var(--agri-radius);
+    background: var(--agri-surface);
+}
+
+.cart-empty__icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.25rem;
+    border-radius: 50%;
+    background: var(--agri-green-muted);
+    color: var(--agri-green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.cart-empty h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cart-empty p {
+    color: var(--agri-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------------------
+   Checkout Page
+   --------------------------------------------------------- */
+.checkout-steps {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.checkout-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    color: var(--agri-text-muted);
+    text-decoration: none;
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.checkout-step:hover {
+    color: var(--agri-green-dark);
+    border-color: rgba(16, 185, 129, 0.35);
+    background: var(--agri-green-muted);
+}
+
+.checkout-step--active {
+    color: var(--agri-green-dark);
+    background: var(--agri-green-muted);
+    border-color: rgba(16, 185, 129, 0.35);
+}
+
+.checkout-step__sep {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+}
+
+.checkout-form-card {
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    background: var(--agri-surface);
+    box-shadow: var(--agri-shadow-sm);
+    overflow: hidden;
+}
+
+.checkout-form-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 1.1rem 1.35rem;
+    border-bottom: 1px solid var(--agri-border);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--agri-text);
+}
+
+.checkout-form-card__header .ti {
+    color: var(--agri-green-dark);
+    font-size: 1.1rem;
+}
+
+.checkout-form-card__body {
+    padding: 1.35rem;
+}
+
+.checkout-form-card__body--flush {
+    padding: 0;
+}
+
+.checkout-section-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--agri-text);
+    margin-bottom: 0.75rem;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.payment-option {
+    position: relative;
+    border: 2px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    padding: 1rem;
+    cursor: pointer;
+    background: var(--agri-bg);
+    transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.payment-option:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: var(--agri-surface);
+}
+
+.payment-option.is-selected {
+    border-color: var(--agri-green);
+    background: var(--agri-green-muted);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.payment-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.payment-option__icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--agri-surface);
+    color: var(--agri-green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-option.is-selected .payment-option__icon {
+    background: var(--agri-green);
+    color: #fff;
+}
+
+.payment-option__title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--agri-text);
+    margin-bottom: 0.15rem;
+}
+
+.payment-option__desc {
+    font-size: 0.75rem;
+    color: var(--agri-text-muted);
+    line-height: 1.4;
+}
+
+.checkout-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px dashed var(--agri-border);
+}
+
+.checkout-summary-item:last-of-type {
+    border-bottom: none;
+}
+
+.checkout-summary-item__img {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--agri-radius-sm);
+    object-fit: cover;
+    border: 1px solid var(--agri-border);
+    flex-shrink: 0;
+    background: var(--agri-bg);
+}
+
+.checkout-summary-item__img--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.checkout-summary-item__info {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.8125rem;
+}
+
+.checkout-summary-item__name {
+    font-weight: 600;
+    color: var(--agri-text);
+}
+
+.checkout-summary-item__qty {
+    color: var(--agri-text-muted);
+    font-size: 0.75rem;
+}
+
+.checkout-summary-item__price {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--agri-text);
+    flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .cart-summary {
+        position: static;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.25rem;
+        padding-top: 0.75rem;
+        border-top: 1px dashed var(--agri-border);
+        text-align: left;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   Tabler Icons
+   --------------------------------------------------------- */
+.ti {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: -0.125em;
+}
+
+.agri-nav li a .ti,
+.agri-sidebar-brand .ti,
+.agri-navbar .brand-icon .ti {
+    font-size: 1.15rem;
+}
+
+/* ---------------------------------------------------------
+   Vex — AgriLink custom theme (confirms + toasts)
+   --------------------------------------------------------- */
+@keyframes agri-toast-in {
+    from { opacity: 0; transform: translateX(1.25rem); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes agri-toast-out {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(1.25rem); }
+}
+
+@keyframes agri-toast-progress {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+
+@keyframes agri-confirm-in {
+    from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes agri-confirm-out {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 0; transform: translateY(-8px) scale(0.98); }
+}
+
+/* Confirm modal */
+.vex.vex-theme-agri.vex-agri-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-content {
+    animation: agri-confirm-in 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    box-shadow: var(--agri-shadow-lg);
+    color: var(--agri-text);
+    font-family: 'Outfit', sans-serif;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1.75rem 1.75rem 1.25rem;
+    position: relative;
+    width: 26rem;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm.vex-closing .vex-content {
+    animation: agri-confirm-out 0.2s forwards;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-close:hover {
+    background: var(--agri-bg);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-close:before {
+    color: var(--agri-text-muted);
+    font-size: 1.35rem;
+    line-height: 1;
+    position: static;
+}
+
+.vex-agri-confirm {
+    text-align: center;
+}
+
+.vex-agri-confirm__icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--agri-green-muted);
+    color: var(--agri-green-dark);
+    font-size: 1.35rem;
+}
+
+.vex-agri-confirm__icon--danger {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+}
+
+.vex-agri-confirm__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--agri-text);
+}
+
+.vex-agri-confirm__text {
+    font-size: 0.925rem;
+    line-height: 1.55;
+    color: var(--agri-text-muted);
+    margin: 0 0 0.25rem;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-form .vex-dialog-message {
+    margin-bottom: 1.25rem;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-buttons {
+    display: flex;
+    gap: 0.625rem;
+    justify-content: center;
+    margin-top: 0.25rem;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button {
+    float: none;
+    margin: 0;
+    border: none;
+    border-radius: var(--agri-radius-sm);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    padding: 0.7rem 1.35rem;
+    text-transform: none;
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button:focus {
+    animation: none;
+    outline: 2px solid var(--agri-green-light);
+    outline-offset: 2px;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button.vex-dialog-button-primary {
+    background: var(--agri-green);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button.vex-dialog-button-primary:hover {
+    background: var(--agri-green-dark);
+    transform: translateY(-1px);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button.vex-dialog-button-secondary {
+    background: var(--agri-bg);
+    color: var(--agri-text-muted);
+    border: 1px solid var(--agri-border);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button.vex-dialog-button-secondary:hover {
+    background: #eef2f7;
+    color: var(--agri-text);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm--danger .vex-dialog-button.vex-dialog-button-primary {
+    background: #ef4444;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.vex.vex-theme-agri.vex-agri-confirm--danger .vex-dialog-button.vex-dialog-button-primary:hover {
+    background: #dc2626;
+}
+
+.vex.vex-theme-agri.vex-agri-confirm--danger .vex-dialog-button.vex-dialog-button-primary:focus {
+    outline-color: #fca5a5;
+}
+
+/* Modal overlay */
+.vex-overlay {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(2px);
+}
+
+/* Toast notifications */
+.vex.vex-theme-agri.vex-agri-toast {
+    top: 1.25rem;
+    right: 1.25rem;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1200;
+}
+
+.vex.vex-theme-agri.vex-agri-toast .vex-content {
+    animation: agri-toast-in 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    pointer-events: auto;
+    width: min(22rem, calc(100vw - 2.5rem));
+}
+
+.vex.vex-theme-agri.vex-agri-toast.vex-closing .vex-content {
+    animation: agri-toast-out 0.25s forwards;
+}
+
+.vex.vex-theme-agri.vex-agri-toast .vex-close {
+    top: 0.55rem;
+    right: 0.55rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.vex.vex-theme-agri.vex-agri-toast .vex-close:hover {
+    background: rgba(15, 23, 42, 0.06);
+}
+
+.vex.vex-theme-agri.vex-agri-toast .vex-close:before {
+    color: var(--agri-text-muted);
+    font-size: 1.15rem;
+    line-height: 1;
+    position: static;
+}
+
+.vex-agri-toast-overlay {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    pointer-events: none !important;
+}
+
+.vex-agri-toast__card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    box-shadow: var(--agri-shadow-lg);
+    overflow: hidden;
+    padding: 1rem 2.25rem 1rem 1rem;
+}
+
+.vex-agri-toast--success .vex-agri-toast__card { border-left: 4px solid var(--agri-green); }
+.vex-agri-toast--error   .vex-agri-toast__card { border-left: 4px solid #ef4444; }
+.vex-agri-toast--warning .vex-agri-toast__card { border-left: 4px solid var(--agri-yellow); }
+.vex-agri-toast--info    .vex-agri-toast__card { border-left: 4px solid #3b82f6; }
+
+.vex-agri-toast__icon {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.vex-agri-toast--success .vex-agri-toast__icon { background: var(--agri-green-muted); color: var(--agri-green-dark); }
+.vex-agri-toast--error   .vex-agri-toast__icon { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+.vex-agri-toast--warning .vex-agri-toast__icon { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+.vex-agri-toast--info    .vex-agri-toast__icon { background: rgba(59, 130, 246, 0.12); color: #2563eb; }
+
+.vex-agri-toast__body {
+    min-width: 0;
+    padding-top: 0.1rem;
+}
+
+.vex-agri-toast__title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--agri-text-muted);
+    margin-bottom: 0.15rem;
+}
+
+.vex-agri-toast__text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--agri-text);
+}
+
+.vex-agri-toast__progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    transform-origin: left center;
+    animation: agri-toast-progress 4.5s linear forwards;
+}
+
+.vex-agri-toast--success .vex-agri-toast__progress { background: var(--agri-green); }
+.vex-agri-toast--error   .vex-agri-toast__progress { background: #ef4444; }
+.vex-agri-toast--warning .vex-agri-toast__progress { background: var(--agri-yellow); }
+.vex-agri-toast--info    .vex-agri-toast__progress { background: #3b82f6; }
+
+@media (max-width: 575.98px) {
+    .vex.vex-theme-agri.vex-agri-toast {
+        top: 0.75rem;
+        right: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .vex.vex-theme-agri.vex-agri-toast .vex-content {
+        width: 100%;
+    }
+
+    .vex.vex-theme-agri.vex-agri-confirm .vex-content {
+        width: 100%;
+        padding: 1.5rem 1.25rem 1rem;
+    }
+
+    .vex.vex-theme-agri.vex-agri-confirm .vex-dialog-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .vex.vex-theme-agri.vex-agri-confirm .vex-dialog-button {
+        width: 100%;
+    }
+}
+
+/* ---- Live delivery tracking (Leaflet) ---- */
+.tracking-map {
+    min-height: 420px;
+    width: 100%;
+    border-radius: var(--agri-radius-sm);
+    background: var(--agri-bg);
+    z-index: 1;
+}
+
+.tracking-status-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.tracking-live-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--agri-text-muted);
+    flex-shrink: 0;
+}
+
+.tracking-live-dot.is-live {
+    background: var(--agri-green);
+    box-shadow: 0 0 0 4px var(--agri-green-muted);
+    animation: tracking-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes tracking-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.tracking-marker span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: var(--agri-shadow-sm);
+}
+
+.tracking-marker--dest span {
+    width: 20px;
+    height: 20px;
+    background: var(--agri-green);
+}
+
+.tracking-marker--rider span {
+    width: 18px;
+    height: 18px;
+    background: #3b82f6;
+}
+
+.tracking-marker--vehicle span {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2dd4bf, #14b8a6);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(20, 184, 166, 0.45);
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.tracking-marker--vehicle span .ti {
+    line-height: 1;
+}
+
+.logistics-tracking-banner {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1040;
+    max-width: calc(100% - 2rem);
+}
+
+.logistics-tracking-banner__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    box-shadow: var(--agri-shadow-lg);
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+}
+
+.logistics-tracking-banner a {
+    color: var(--agri-green-dark);
+    font-weight: 600;
+}
+
+.tracking-map--compact {
+    min-height: 400px;
+}
+
+@media (min-width: 992px) {
+    .tracking-map--compact {
+        min-height: 480px;
+    }
+}
+
+/* ---------------------------------------------------------
+   Dashboard — charts & admin layout
+   --------------------------------------------------------- */
+.chart-card {
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    padding: 1.5rem;
+    box-shadow: var(--agri-shadow-sm);
+    height: 100%;
+}
+
+.chart-card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--agri-text);
+    margin-bottom: 1.25rem;
+}
+
+.forecast-section-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--agri-text);
+    margin-bottom: 1rem;
+}
+
+.forecast-section-title span {
+    font-weight: 500;
+    color: var(--agri-text-muted);
+    font-size: 0.8125rem;
+}
+
+.forecast-card {
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    padding: 1.25rem 1.35rem;
+    box-shadow: var(--agri-shadow-sm);
+    height: 100%;
+    transition: transform var(--transition-bounce), box-shadow var(--transition-bounce);
+}
+
+.forecast-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--agri-shadow-md);
+}
+
+.forecast-product-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--agri-text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--agri-border);
+    line-height: 1.3;
+}
+
+.forecast-metric {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    font-size: 0.875rem;
+}
+
+.forecast-metric + .forecast-metric {
+    border-top: 1px dashed var(--agri-border);
+}
+
+.forecast-metric-label {
+    color: var(--agri-text-muted);
+    font-weight: 500;
+}
+
+.forecast-metric-value {
+    font-weight: 700;
+    color: var(--agri-text);
+    text-align: right;
+}
+
+.forecast-metric--highlight .forecast-metric-value {
+    color: var(--agri-green-dark);
+}
+
+.forecast-trend--up {
+    color: var(--agri-green-dark);
+}
+
+.forecast-trend--down {
+    color: #dc2626;
+}
+
+.forecast-trend--na {
+    color: var(--agri-text-muted);
+    font-weight: 600;
+}
+
+.stat-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--agri-radius-sm);
+    font-size: 1.15rem;
+}
+
+.stat-icon--green  { background: var(--agri-green-muted); color: var(--agri-green-dark); }
+.stat-icon--blue   { background: #e0f2fe; color: #0369a1; }
+.stat-icon--purple { background: #f3e8ff; color: #7e22ce; }
+.stat-icon--amber  { background: #fef3c7; color: #b45309; }
+.stat-icon--slate  { background: #f1f5f9; color: #475569; }
+
+.stat-meta {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--agri-text-muted);
+    margin-top: 0.35rem;
+}
+
+.stat-meta.is-up   { color: var(--agri-green-dark); }
+.stat-meta.is-down { color: #dc2626; }
+
+.admin-hero {
+    background: linear-gradient(135deg, #ecfdf5 0%, var(--agri-surface) 55%, #f8fafc 100%);
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius);
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--agri-shadow-sm);
+}
+
+.admin-hero-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--agri-text);
+    margin-bottom: 0.35rem;
+}
+
+.admin-hero-sub {
+    font-size: 0.9rem;
+    color: var(--agri-text-muted);
+    margin-bottom: 0;
+}
+
+.admin-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.admin-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--agri-surface);
+    border: 1px solid var(--agri-border);
+    color: var(--agri-text-muted);
+}
+
+.admin-chip strong {
+    color: var(--agri-text);
+    font-weight: 700;
+}
+
+.admin-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.admin-pipeline-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr 2.5rem;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.admin-pipeline-label {
+    font-weight: 600;
+    color: var(--agri-text-muted);
+    text-transform: capitalize;
+}
+
+.admin-pipeline-bar {
+    height: 0.55rem;
+    background: var(--agri-bg);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.admin-pipeline-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.admin-pipeline-fill--pending    { background: #f4c457; }
+.admin-pipeline-fill--processing { background: #3b82f6; }
+.admin-pipeline-fill--in_transit { background: #8b5cf6; }
+.admin-pipeline-fill--delivered  { background: var(--agri-green); }
+.admin-pipeline-fill--cancelled  { background: #ef4444; }
+
+.admin-pipeline-count {
+    font-weight: 700;
+    color: var(--agri-text);
+    text-align: right;
+}
+
+.admin-quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.admin-quick-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 1px solid var(--agri-border);
+    border-radius: var(--agri-radius-sm);
+    background: var(--agri-bg);
+    text-decoration: none;
+    color: var(--agri-text);
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.admin-quick-link:hover {
+    background: var(--agri-green-muted);
+    border-color: rgba(16, 185, 129, 0.25);
+    color: var(--agri-text);
+    transform: translateY(-2px);
+}
+
+.admin-quick-link span {
+    font-size: 0.75rem;
+    color: var(--agri-text-muted);
+}
+
+.admin-quick-link strong {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.admin-alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.admin-alert-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--agri-radius-sm);
+    background: var(--agri-bg);
+    font-size: 0.85rem;
+}
+
+.admin-alert-item.is-warn {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+}
+
+.admin-alert-item.is-ok {
+    background: var(--agri-green-muted);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.role-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25em 0.55em;
+    border-radius: 999px;
+}
+
+.role-pill--admin     { background: #ede9fe; color: #7c3aed; }
+.role-pill--farmer    { background: #ecfdf5; color: #047857; }
+.role-pill--buyer     { background: #e0f2fe; color: #0369a1; }
+.role-pill--logistics { background: #f3e8ff; color: #7e22ce; }
+
+@media (max-width: 575.98px) {
+    .admin-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-pipeline-row {
+        grid-template-columns: 5.5rem 1fr 2rem;
+        gap: 0.5rem;
+    }
+}
+
