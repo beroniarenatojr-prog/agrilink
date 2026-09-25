@@ -21,6 +21,19 @@ if (!defined('APP_BASE')) {
     define('APP_BASE', rtrim($base, '/') ?: '');
 }
 
+/**
+ * Server-only folder that deployments never touch (a Git deploy wipes the project folder).
+ * Lives three levels up from config/, e.g. /home/<user>/domains/<domain>/agrilink-private on Hostinger.
+ * Holds database.php (credentials) and uploads/. Absent locally, so XAMPP uses the defaults.
+ */
+if (!defined('PRIVATE_DIR')) {
+    define('PRIVATE_DIR', dirname(__DIR__, 3) . '/agrilink-private');
+}
+
+if (!defined('UPLOAD_DIR')) {
+    define('UPLOAD_DIR', is_dir(PRIVATE_DIR . '/uploads') ? PRIVATE_DIR . '/uploads' : dirname(__DIR__) . '/uploads');
+}
+
 if (!defined('APP_NAME')) {
     define('APP_NAME', 'AgriLink');
 }

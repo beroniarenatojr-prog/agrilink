@@ -4,9 +4,11 @@
  * Usage: /media.php?path=products/abc123.jpg
  *
  * - Blocks directory traversal (../ and backslashes)
- * - Serves only files inside /uploads/
+ * - Serves only files inside UPLOAD_DIR
  * - Forces correct Content-Type headers
  */
+
+require_once __DIR__ . '/config/app.php';
 
 $path = $_GET['path'] ?? '';
 
@@ -20,8 +22,8 @@ if (empty($path)) {
     exit('Missing path.');
 }
 
-$fullPath = __DIR__ . '/uploads/' . $path;
-$realBase = realpath(__DIR__ . '/uploads');
+$fullPath = UPLOAD_DIR . '/' . $path;
+$realBase = realpath(UPLOAD_DIR);
 
 if ($realBase === false) {
     http_response_code(500);

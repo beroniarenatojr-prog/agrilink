@@ -40,7 +40,7 @@ $targetName = $_POST['product_name'] ?? null;
 $seeded  = 0;
 $skipped = 0;
 
-$uploadDir = __DIR__ . '/../../uploads/products/';
+$uploadDir = UPLOAD_DIR . '/products/';
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
 }

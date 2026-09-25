@@ -6,12 +6,12 @@
 
 require_once __DIR__ . '/app.php';
 
-// Server-only credentials (e.g. Hostinger) live in database.local.php, which is never uploaded from local.
-if (is_file(__DIR__ . '/database.local.php')) {
-    require __DIR__ . '/database.local.php';
+// Server-only credentials (e.g. Hostinger) live outside the deployed folder so deploys can't overwrite them.
+if (is_file(PRIVATE_DIR . '/database.php')) {
+    require PRIVATE_DIR . '/database.php';
 }
 
-// Local XAMPP defaults, used when database.local.php does not define a value.
+// Local XAMPP defaults, used when the private file does not define a value.
 defined('DB_HOST')    || define('DB_HOST', 'localhost');
 defined('DB_PORT')    || define('DB_PORT', '3306');
 defined('DB_NAME')    || define('DB_NAME', 'agrilink');

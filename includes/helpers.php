@@ -242,7 +242,7 @@ function uploadImage(array $file, string $prefix = ''): ?string
     };
 
     $filename = ($prefix ? $prefix . '_' : '') . bin2hex(random_bytes(8)) . '.' . $ext;
-    $dir      = __DIR__ . '/../uploads/products/';
+    $dir      = UPLOAD_DIR . '/products/';
     $dest     = $dir . $filename;
 
     if (!is_dir($dir)) {
@@ -259,7 +259,7 @@ function uploadImage(array $file, string $prefix = ''): ?string
 function deleteUploadedFile(?string $path): void
 {
     if (!$path) return;
-    $full = __DIR__ . '/../uploads/' . $path;
+    $full = UPLOAD_DIR . '/' . $path;
     if (is_file($full)) {
         unlink($full);
     }
