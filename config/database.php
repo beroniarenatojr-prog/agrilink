@@ -6,12 +6,18 @@
 
 require_once __DIR__ . '/app.php';
 
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-define('DB_NAME', 'agrilink');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_CHARSET', 'utf8mb4');
+// Server-only credentials (e.g. Hostinger) live in database.local.php, which is never uploaded from local.
+if (is_file(__DIR__ . '/database.local.php')) {
+    require __DIR__ . '/database.local.php';
+}
+
+// Local XAMPP defaults, used when database.local.php does not define a value.
+defined('DB_HOST')    || define('DB_HOST', 'localhost');
+defined('DB_PORT')    || define('DB_PORT', '3306');
+defined('DB_NAME')    || define('DB_NAME', 'agrilink');
+defined('DB_USER')    || define('DB_USER', 'root');
+defined('DB_PASS')    || define('DB_PASS', '');
+defined('DB_CHARSET') || define('DB_CHARSET', 'utf8mb4');
 
 class Database
 {
